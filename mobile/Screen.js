@@ -10,7 +10,7 @@ import {
 export default function Screen(props){
     return(
         <View style={styles.tela}>            
-            <Text style={styles.texto} >{props.valores.anterior}</Text>
+            <Text style={styles.texto}>{props.valores.anterior}</Text>
             <Text style={styles.texto}>{props.valores.operacao}</Text>
             <Text style={styles.texto}>{props.valores.atual}</Text>
         </View>
@@ -19,14 +19,16 @@ export default function Screen(props){
 
 const styles = StyleSheet.create({
     tela: {
+        flex: 1,
         display: 'flex',
         alignItems: 'flex-end',
-        paddingRight: 20,
+        marginRight: 20,        
     },
 
-    texto: {
-        fontFamily: 'Digital-7',
-        fontSize: 60,  
-        color: 'rgba(0,0,0,0.7)',
+    texto: {   
+        flex:1,     
+        fontFamily: 'digital',
+        fontSize: 80,  
+        color: 'rgba(0,0,0,0.6)',
     }
 });

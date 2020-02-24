@@ -23,6 +23,7 @@ const App: () => React$Node = () => {
   const [operacao, setOperacao] = useState('');
   const [light, setLight] = useState('#10710C');
   const [on, setOn] = useState(false);
+  const [result, setResult] = useState(false);
 
   function luz(blight) {
     if (blight) {
@@ -40,6 +41,7 @@ const App: () => React$Node = () => {
         setAtual('');
         setAnterior('');
         setOperacao('');
+        setResult(false);
         luz(false);
         return;
       }else {
@@ -106,38 +108,36 @@ const App: () => React$Node = () => {
         case '=':
           if (anterior !== '') {
             if (operacao === '+') {
-              setAnterior(atual);
-              setAtual(Number(anterior) + Number(atual));
+              setAtual(String(Number(anterior) + Number(atual)));
             }
             if (operacao === '-') {
-              setAnterior(atual);
-              setAtual(Number(anterior) - Number(atual));
+              setAtual(String(Number(anterior) - Number(atual)));
             }
             if (operacao === '÷') {
-              setAnterior(atual);
-              setAtual(Number(anterior) / Number(atual));
+              setAtual(String(Number(anterior) / Number(atual)));
             }
             if (operacao === '×') {
-              setAnterior(atual);
-              setAtual(Number(anterior) * Number(atual));
+              setAtual(String(Number(anterior) * Number(atual)));
             }
             setAnterior('');
             setOperacao('');
+            setResult(true);
           } else {
             setAtual('ERR');
           }
           break;
         case 'S':
           if (atual !== '0') {
-            setAtual(Number(atual)*-1);
+            setAtual(String(Number(atual)*-1));
           }
           break;
-        default:
-          if (atual.length < 8) {
-            if (atual === '0' || atual === 'ERR') {
+        default:          
+          if (atual.length < 8) { 
+            if (result || atual === '0' || atual === 'ERR') {
               setAtual(valorAtual);
+              setResult(false);
             } else {
-              setAtual(atual + valorAtual)
+              setAtual(atual + valorAtual);
             }
           }
       }
@@ -152,7 +152,8 @@ const App: () => React$Node = () => {
       backgroundColor: '#008081'
     },
   
-    tela: {      
+    tela: { 
+      flex: 1.3,     
       margin: '5%',
       backgroundColor: light,  
       borderWidth: 4,
