@@ -1,0 +1,27 @@
+.layout-container {
+    height: 100%;
+    background-color: #EEE; 
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    border: 1px solid #000;
+    border-bottom-left-radius: 3%;
+    border-bottom-right-radius: 3%;
+    padding: 0;
+}
+
+.layout-container button{
+    height: 100%;
+    font-size: 30px;
+    font-weight: bold;
+    background-color: #FFF;
+    cursor: pointer;
+    border: 2px ridge #DDD;    
+    outline: none;
+}
+
+.layout-container button:hover{    
+    background-color: #DDD;
+    cursor: pointer;
+    border: 2px solid #666;    
+    outline: none;
+}

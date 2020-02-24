@@ -1,0 +1,25 @@
+.tela-container{
+    display: grid;
+    grid-template-rows: 1fr 0.5fr 1fr;
+    height: 100%;
+    justify-content: end;
+    align-items: center;
+    margin: 0 5px;    
+}
+
+@font-face {
+    font-family: 'Digital-7';
+    src: url('./font/digital-7.ttf') format('truetype');
+}
+
+.tela-container label{
+    font-size: 90px;
+    color: rgba(0,0,0,0.7);
+    font-family: 'Digital-7';
+}
+
+.tela-container strong{
+    font-size: 90px;
+    color: rgba(0,0,0,0.7);
+    font-family: 'Digital-7';
+}

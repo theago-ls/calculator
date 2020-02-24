@@ -1,10 +1,23 @@
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
+ * @format
+ * @flow
+ */
+
 import React, { useState } from 'react';
-import './App.css';
+import {
+  SafeAreaView,
+  StyleSheet, 
+  StatusBar,
+  View
+} from 'react-native';
 
 import Buttons from './Buttons';
 import Screen from './Screen';
 
-function App() {
+const App: () => React$Node = () => {
   const [atual, setAtual] = useState('');
   const [anterior, setAnterior] = useState('');
   const [operacao, setOperacao] = useState('');
@@ -131,20 +144,40 @@ function App() {
     }
   }
 
+  const styles = StyleSheet.create({
+    container: {
+      display: 'flex',
+      flex: 1,
+      flexDirection: 'column',
+      backgroundColor: '#008081'
+    },
+  
+    tela: {      
+      margin: '5%',
+      backgroundColor: light,  
+      borderWidth: 4,
+      borderColor: '#000',
+      borderStyle: 'solid'       
+    },
+  
+    botoes: {  
+      flex: 2,
+    },
+  });
+
   return (
-    <div className="App">
-      <div className="borda-exterior">
-        <div className="borda-inferior">
-          <div className="tela" style={{ backgroundColor: light }}>
-            <Screen valores={{ atual, anterior, operacao }} />
-          </div>
-          <div className="botoes">
-            <Buttons atualizarValor={atualizarValor} />
-          </div>
-        </div>
-      </div>
-    </div>
+    <>
+      <StatusBar barStyle="dark-content" />
+      <SafeAreaView style={styles.container}> 
+        <View style={styles.tela} >
+          <Screen valores={{ atual, anterior, operacao }}/>
+        </View>
+        <View style={styles.botoes} >
+          <Buttons atualizarValor={atualizarValor}/>
+        </View>
+      </SafeAreaView>
+    </>
   );
-}
+};
 
 export default App;
